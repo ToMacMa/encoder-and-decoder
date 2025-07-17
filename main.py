@@ -21,11 +21,7 @@ files = os.listdir()
 
 if 'defaultCode.json' not in files:
     url = "https://raw.githubusercontent.com/ToMacMa/encoder-and-decoder/refs/heads/main/defaultCode.json"
-    print ("download start!")
     filename, headers = urllib.request.urlretrieve(url, filename="defaultCode.json")
-    print ("download complete!")
-    print ("download file location: ", filename)
-    print ("download headers: ", headers)
 files = os.listdir()
 
 def readCode():
@@ -41,5 +37,3 @@ def readCode():
         f.close()
         return code
 code = readCode()
-
-print(code)
