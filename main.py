@@ -3,14 +3,6 @@ import urllib.request
 from createCode import *
 
 CHAR_LIST = []
-
-def setupListForFunctions(code):
-    for i in range(32,127):
-        CHAR_LIST.append(chr(i))
-
-setupListForFunctions(1)
-print(CHAR_LIST)
-
 def encode():
     pass
 
@@ -19,9 +11,12 @@ def decode():
 
 files = os.listdir()
 
-if 'defaultCode.json' not in files:
-    url = "https://raw.githubusercontent.com/ToMacMa/encoder-and-decoder/refs/heads/main/defaultCode.json"
-    filename, headers = urllib.request.urlretrieve(url, filename="defaultCode.json")
+def downloadFileIfNone(url,path):
+    tmp = os.listdir()
+    if path not in tmp:
+        urllib.request.urlretrieve(url, filename=path)
+
+downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/encoder-and-decoder/refs/heads/main/defaultCode.json",'defaultCode.json')
 files = os.listdir()
 
 def readCode():
