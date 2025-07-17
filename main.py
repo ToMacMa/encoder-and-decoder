@@ -1,11 +1,15 @@
 import os,json
+import urllib.request
 
 files = os.listdir()
 
 if 'defaultCode.json' not in files:
-    f = open('defaultCode.json','w')
-    f.write('{"code":"helloWorld!"}')
-    f.close()
+    url = "https://raw.githubusercontent.com/ToMacMa/encoder-and-decoder/refs/heads/main/defaultCode.json"
+    print ("download start!")
+    filename, headers = urllib.request.urlretrieve(url, filename="defaultCode.json")
+    print ("download complete!")
+    print ("download file location: ", filename)
+    print ("download headers: ", headers)
 files = os.listdir()
 
 def readCode():
