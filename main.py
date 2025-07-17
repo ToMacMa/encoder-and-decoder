@@ -34,12 +34,12 @@ def readCode():
         f = open('defaultCode.json','r')
         code = json.load(f)
         f.close()
-        return code['code']
+        return code
     else:
         f = open('code.json','r')
         code = json.load(f)
         f.close()
-        return code['code']
+        return code
 code = readCode()
 
 print(code)
