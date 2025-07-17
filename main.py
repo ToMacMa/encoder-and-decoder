@@ -1,7 +1,8 @@
 import os,json
 import urllib.request
+def downloadFileIfNone(url=str(),path=str()):
+    """Downloads a file/folder if it isn't already present."""
 
-def downloadFileIfNone(url,path):
     tmp = os.listdir()
     if path not in tmp:
         urllib.request.urlretrieve(url, filename=path)
@@ -13,11 +14,25 @@ except:
     quit()
 
 CHAR_LIST = []
-def encode():
-    pass
+def encode(code=list(),text=str()):
+    output = ""
+    text = str(text)
+    code0 = code[0]
+    code1 = code[1]
+    for i in text:
+        output += code1[code0.index(i)]
+    return output
 
-def decode():
-    pass
+
+def decode(code,text):
+    output = ""
+    text = str(text)
+    code0 = code[0]
+    code1 = code[1]
+    for i in text:
+        output += code0[code1.index(i)]
+    return output
+
 
 files = os.listdir()
 
@@ -37,3 +52,11 @@ def readCode():
         f.close()
         return code
 code = readCode()
+
+match input("Which do you want to do?\n Type enc for encoding.\n Type dec for decoding.\n"):
+    case "enc":
+        print(encode(code,input("Text to encode:\n")))
+    case "dec":
+        print(decode(code,input("Text to decode:\n")))
+    case _:
+        print("Invalid option.")
