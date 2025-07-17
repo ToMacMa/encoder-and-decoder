@@ -1,5 +1,21 @@
 import os,json
 import urllib.request
+from createCode import *
+
+CHAR_LIST = []
+
+def setupListForFunctions(code):
+    for i in range(32,127):
+        CHAR_LIST.append(chr(i))
+
+setupListForFunctions(1)
+print(CHAR_LIST)
+
+def encode():
+    pass
+
+def decode():
+    pass
 
 files = os.listdir()
 
