@@ -94,7 +94,7 @@ if __name__ == "__main__":
                     print("Done!")
                     quit()
                 case "text":
-                    print(decode(code,decode(code,input("Text to decode:\n"))))
+                    print(decode(code,decode(code,input("Text to encode:\n"))))
                     quit()
                 case _:
                     print("Invalid option.")
