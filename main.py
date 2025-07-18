@@ -95,9 +95,12 @@ if __name__ == "__main__":
                     quit()
                 case "text":
                     print(decode(code,decode(code,input("Text to decode:\n"))))
+                    quit()
                 case _:
                     print("Invalid option.")
+                    quit()
             print(encode(code,encode(code,input("Text to encode:\n"))))
+            quit()
         case "dec":
             match input("On file or not?\n Write file or text."):
                 case "file":
@@ -106,8 +109,9 @@ if __name__ == "__main__":
                     quit()
                 case "text":
                     print(decode(code,decode(code,input("Text to decode:\n"))))
+                    quit()
                 case _:
                     print("Invalid option.")
-            
+                    quit()      
         case _:
             print("Invalid option.")
