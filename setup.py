@@ -2,7 +2,7 @@ from cx_Freeze import setup
 
 # Dependencies are automatically detected, but they might need fine-tuning.
 build_exe_options = {
-    "excludes": ["tkinter", "unittest"],
+    "excludes": ["unittest"],
     "zip_include_packages": ["encodings", "PySide6", "shiboken6"],
 }
 
