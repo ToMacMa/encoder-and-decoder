@@ -70,6 +70,7 @@ def decodeFile(code,fp,backup=True):
     f.close()
 downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/en_us.json","en_us.json")
 downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/pl.json","pl.json")
+downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/defaults.json","settings.json")
 
 
 if __name__ == "__main__":
