@@ -1,5 +1,6 @@
 import os,json
 import urllib.request
+
 def downloadFileIfNone(url=str(),path=str()):
     """Downloads a file/folder if it isn't already present."""
 
@@ -67,7 +68,8 @@ def decodeFile(code,fp,backup=True):
     data = decode(code,data)
     f.write(data)
     f.close()
-
+downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/en_us.json","en_us.json")
+downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/pl.json","pl.json")
 
 
 if __name__ == "__main__":
