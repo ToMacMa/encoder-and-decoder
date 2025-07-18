@@ -68,17 +68,30 @@ def decodeFile(code,fp,backup=True):
     data = decode(code,data)
     f.write(data)
     f.close()
+
+def loadSettings():
+    f = open('settings.json','r')
+    settings = json.loads(f.read())
+    f.close()
+    return settings
+def loadLanguage(settings):
+    f = open(f"{settings['lang']}.json")
+    langData = json.loads(f.read())
+    f.close()
+    return langData
+
 downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/en_us.json","en_us.json")
 downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/pl.json","pl.json")
 downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/database-languages/refs/heads/main/encdecoder/defaults.json","settings.json")
-
+settings = loadSettings()
+langData = loadLanguage(settings)
 
 if __name__ == "__main__":
     downloadFileIfNone("https://raw.githubusercontent.com/ToMacMa/encoder-and-decoder/refs/heads/main/createCode.py","createCode.py")
     try:
         from createCode import *
     except:
-        print("Run this program again.")
+        print(langData['error1'])
         quit()
 
     CHAR_LIST = []
@@ -89,32 +102,25 @@ if __name__ == "__main__":
 
     code = readCode()
 
-    match input("Which do you want to do?\n Type enc for encoding.\n Type dec for decoding.\n"):
+    match input(langData['prompt1']):
         case "enc":
-            match input("On file or not?\n Write file or text."):
+            match input(langData['prompt2']):
                 case "file":
-                    encodeFile(code,str(input("File path:")))
+                    encodeFile(code,str(input(langData['filePath'])))
                     print("Done!")
-                    quit()
                 case "text":
-                    print(encode(code,input("Text to encode:\n")))
-                    quit()
+                    print(encode(code,input(langData['textEncode'])))
                 case _:
-                    print("Invalid option.")
-                    quit()
-            print(encode(code,encode(code,input("Text to encode:\n"))))
-            quit()
+                    print(langData['invalid'])
+            
         case "dec":
-            match input("On file or not?\n Write file or text."):
+            match input(langData['prompt1']):
                 case "file":
-                    decodeFile(code,str(input("File path:")))
+                    decodeFile(code,str(input(langData['filePath'])))
                     print("Done!")
-                    quit()
                 case "text":
-                    print(code,decode(code,input("Text to decode:\n")))
-                    quit()
+                    print(code,decode(code,input(langData['textDecode'])))
                 case _:
-                    print("Invalid option.")
-                    quit()      
+                    print(langData['invalid'])
         case _:
-            print("Invalid option.")
+            print(langData['invalid'])
