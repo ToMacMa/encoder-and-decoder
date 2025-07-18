@@ -1,1 +1,0 @@
-print(ord('r'),ord('a'),ord('t'))
